@@ -1,9 +1,11 @@
 package tech.collabboard.springsecurity.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import tech.collabboard.springsecurity.dto.LoginRequest;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,7 +20,46 @@ public class User {
 
     @Column(unique = true)
     private String username;
+
     private String password;
+    private String primaryName;
+    private String secondName;
+    private String avatar;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getPrimaryName() {
+        return primaryName;
+    }
+
+    public void setPrimaryName(String primaryName) {
+        this.primaryName = primaryName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(

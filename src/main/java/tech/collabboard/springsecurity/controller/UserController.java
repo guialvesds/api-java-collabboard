@@ -54,6 +54,10 @@ public class UserController {
         user.setUsername(dto.username());
         user.setPassword(bCryptPasswordEncoder.encode(dto.password()));
         user.setRoles(Set.of(basicRole));
+        user.setPrimaryName(dto.primaryName());
+        user.setSecondName(dto.secondName());
+        user.setAvatar(dto.avatar());
+        user.setCreatedAt(dto.createdAt());
 
         userRepository.save(user);
 
@@ -61,8 +65,8 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    @PreAuthorize("hasAuthority('scope_admin')")
-    public  ResponseEntity<List<User>> listUsers() {
+    @PreAuthorize("hasAuthority('SCOPE_admin')")
+    public ResponseEntity<List<User>> listUsers() {
         var users = userRepository.findAll();
         return ResponseEntity.ok(users);
 
