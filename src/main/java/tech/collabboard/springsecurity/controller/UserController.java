@@ -6,10 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import tech.collabboard.springsecurity.dto.CreateUserDto;
 import tech.collabboard.springsecurity.entities.Role;
@@ -20,7 +17,9 @@ import tech.collabboard.springsecurity.repository.UserRepository;
 import java.util.List;
 import java.util.Set;
 
+@CrossOrigin("*")
 @RestController
+@RequestMapping("/cb")
 public class UserController {
 
     private final UserRepository userRepository;

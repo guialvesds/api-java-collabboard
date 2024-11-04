@@ -8,9 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tech.collabboard.springsecurity.dto.LoginRequest;
 import tech.collabboard.springsecurity.dto.LoginResponse;
 import tech.collabboard.springsecurity.entities.Role;
@@ -19,7 +17,9 @@ import tech.collabboard.springsecurity.repository.UserRepository;
 import java.time.Instant;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")
 @RestController
+@RequestMapping("/cb")
 public class TokenController {
 
     private final JwtEncoder jwtEncoder;
